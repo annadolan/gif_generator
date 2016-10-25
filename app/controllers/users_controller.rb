@@ -10,10 +10,10 @@ class UsersController < ApplicationController
       flash[:success] = "New user created!"
     elsif User.find_by(email: @user.email)
       redirect_to login_path
-      #flash[:error] = "User already exists, please log in"
+      flash[:error] = "User already exists, please log in"
     else
+      flash.now[:error] = "Please fill in all fields before submitting new user"
       render :new
-      #flash.now[:error] = "Please fill in all fields before submitting new user"
     end
   end
 
