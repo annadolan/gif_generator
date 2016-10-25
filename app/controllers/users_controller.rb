@@ -1,0 +1,29 @@
+class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to user_path(@user)
+      flash[:success] = "New user created!"
+    elsif User.find_by(email: @user.email)
+      redirect_to login_path
+      #flash[:error] = "User already exists, please log in"
+    else
+      render :new
+      #flash.now[:error] = "Please fill in all fields before submitting new user"
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password_digest)
+  end
+end
