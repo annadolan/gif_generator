@@ -1,4 +1,7 @@
 <h1>All Categories</h1>
 <% @categories.each do |category| %>
-  <%= category.search_term %>
+  <div class="category_<%= category.id %>">
+    <%= category.search_term %>
+    <%= link_to "Delete", category_path(category), method: :delete %>
+  </div>
 <% end %>
