@@ -1,4 +1,4 @@
-
-  <%= "Welcome #{@user.username}" %>
-
-  <%= link_to "(logout)", logout_path %>
+  <% @user.favorites.each do |fav| %>
+    <p><%= image_tag(Gif.find_by(id: fav.gif_id).image_path) %></p>
+    <%= link_to "Unfavorite", favorite_path(fav), method: :delete %>
+    <% end %>

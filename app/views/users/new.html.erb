@@ -11,6 +11,13 @@
 <%= f.label :password %>
 <%= f.password_field :password %>
 
+<%# if current_user.admin == true %>
+<%= f.label :admin %>
+<%= f.check_box :admin %>
+<%# else %>
+<%# params[:admin] = false %>
+<%# end %>
+
 <%= f.submit %>
 
 <% end %>

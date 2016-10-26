@@ -12,7 +12,8 @@
   <% end %>
 
   <% if logged_in? %>
-      <p><%= link_to "Logout", logout_path, method: :delete %></p>
+      <p>Logged in as <%= current_user.username %></p>
+      <p><%= link_to "Logout", logout_path %></p>
       <% else %>
       <%= link_to "Login", login_path %>
     <% end %>

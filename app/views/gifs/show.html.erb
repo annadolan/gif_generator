@@ -1,1 +1,8 @@
 <%= image_tag(@gif.image_path) %>
+<% if !Favorite.find_by(user_id: current_user.id, gif_id: @gif.id) %>
+  <%= link_to 'Favorite me!', {:controller => "favorites",
+                       :action => "create",
+                       :user_id => current_user.id,
+                       :gif_id => @gif.id},
+                       :method => "post" %>
+<% end %>
