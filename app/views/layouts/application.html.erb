@@ -12,7 +12,7 @@
   <% end %>
 
   <% if logged_in? %>
-      <p>Logged in as <%= current_user.username %></p>
+      <p>Logged in as <%= current_user.username %> • <%= link_to "View Favorites", user_path(current_user) %></p>
       <p><%= link_to "Logout", logout_path %></p>
       <% else %>
       <%= link_to "Login", login_path %>
