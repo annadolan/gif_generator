@@ -6,7 +6,7 @@ describe "User creates a new user account" do
 
     fill_in "user[username]", with: "anna"
     fill_in "user[email]", with: "mail@mail.com"
-    fill_in "user[password_digest]", with: "password"
+    fill_in "user[password]", with: "password"
 
     click_button "Create User"
 
@@ -17,12 +17,12 @@ describe "User creates a new user account" do
   end
 
   scenario "a user tries to create an account with an existing email" do
-    User.create(username: "anna", email: "mail@mail.com", password_digest: "dskjfgh")
+    User.create(username: "anna", email: "mail@mail.com", password: "dskjfgh")
     visit new_user_path
 
     fill_in "user[username]", with: "bob"
     fill_in "user[email]", with: "mail@mail.com"
-    fill_in "user[password_digest]", with: "password"
+    fill_in "user[password]", with: "password"
 
     click_button "Create User"
 
@@ -35,7 +35,7 @@ describe "User creates a new user account" do
     visit new_user_path
 
     fill_in "user[username]", with: "bob"
-    fill_in "user[password_digest]", with: "password"
+    fill_in "user[password]", with: "password"
 
     click_button "Create User"
 

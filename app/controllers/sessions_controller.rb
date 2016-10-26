@@ -3,20 +3,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.authenticate(params[:email], params[:password_digest])
+    @user = User.find_by(email: params[:email])
 
-    unless @user.nil?
+    if @user.authenticate(params[:password])
+      flash[:success] = "Successfully logged in!"
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:alert] = "Login failed"
-      redirect_to login_path
+      flash[:error] = "Incorrect password, please try again"
+      render :new
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to login_path
+    session.delete(:user_id)
     flash[:success] = "You have successfully logged out!"
+    redirect_to login_path
   end
 end
