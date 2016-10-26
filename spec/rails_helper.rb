@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'database_cleaner'
+require 'giphy'
 
 DatabaseCleaner.strategy = :truncation
 
@@ -18,6 +19,11 @@ RSpec.configure do |c|
   c.after(:each) do
     DatabaseCleaner.clean
   end
+end
+
+Giphy::Configuration.configure do |config|
+  config.version = "dc6zaTOxFJmzC"
+  config.api_key = "dc6zaTOxFJmzC"
 end
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -34,7 +40,7 @@ end
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

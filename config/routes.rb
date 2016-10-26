@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :new, :create, :destroy]
 
+  resources :gifs, only: [:new, :show, :create, :index, :destroy]
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

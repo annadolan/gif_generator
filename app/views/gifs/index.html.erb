@@ -1,0 +1,5 @@
+<% @gifs.each do |gif| %>
+<%= image_tag(gif.image_path) %>
+<p><%= link_to "Delete", gif_path(gif), method: :delete %></p>
+<%#= link_to "GIF", gif.image_path %>
+<% end %>
