@@ -16,6 +16,3 @@ class Admin::FavoritesController < Admin::BaseController
     redirect_to user_path(current_user)
   end
 end
-
-
-end

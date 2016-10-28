@@ -1,9 +1,13 @@
 <h1>Generate a New GIF</h1>
-<%= form_tag admin_gifs_path, :method => 'post' do %>
-  <p>
-    <%= text_field_tag :search_term %>
-    <%= submit_tag "Search" %>
+<div class="col-md-6"><%= form_tag admin_gifs_path, :method => 'post' do %>
+
+    <%= text_field_tag :search_term, nil, placeholder: "Category" %></p>
+    <%= submit_tag "Generate Gif", class: "btn btn-success" %>
   </p>
-<% end %>
+<% end %></div>
+<div class="col-md-6"><p>Available Categories</p>
+  <% @categories.each do |category| %>
+    <%= category.search_term %><br>
+  <% end %>
 
 <%= link_to "Create a new Category", new_admin_category_path %>

@@ -1,5 +1,5 @@
   <% @user.favorites.each do |fav| %>
     <p><%= image_tag(Gif.find_by(id: fav.gif_id).image_path) %></p>
-    <p><%= link_to "Unfavorite", favorite_path(fav), method: :delete %></p>
+    <p><%= link_to "Unfavorite", favorite_path(fav), method: :delete, class: "btn btn-warning" %></p>
     <% end %>
 <p><%= link_to "Back to all GIFs", gifs_path %><p>

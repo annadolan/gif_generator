@@ -9,6 +9,7 @@ class GifsController < ApplicationController
 
   def new
     @gif = Gif.new
+
   end
 
   def show

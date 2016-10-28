@@ -4,6 +4,10 @@ def index
   @categories = Category.all
 end
 
+def new
+  @categories = Category.all
+end
+
 def create
   # @category = Category.find_by(search_term: params[:search_term])
   # @gif = Gif.new(image_path: Giphy.random(@category.search_term).image_url.to_s, category_id: @category.id)

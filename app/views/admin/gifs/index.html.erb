@@ -1,18 +1,26 @@
+<div class="container">
 <% @categories.each do |category| %>
-  <h2><%= category.search_term %></h2>
+  <h2><%= category.search_term.capitalize %></h2>
+  <div class="row well">
     <% category.gifs.each do |gif| %>
-      <%= link_to image_tag(gif.image_path), gif_path(gif) %>
-      <p><%= link_to "Delete", admin_gif_path(gif), method: :delete %></p>
-      <% if !Favorite.find_by(user_id: current_user.id, gif_id: gif.id) %>
-        <p><%= link_to 'Favorite me!', {:controller => "favorites",
+      <div class="col-md-4">
+        <div class="thumbnail">
+      <%= image_tag(gif.image_path) %>
+      <div class="caption">
+        <%= link_to "Delete", admin_gif_path(gif), method: :delete, class: "btn btn-danger" %>
+        <% if !Favorite.find_by(user_id: current_user.id, gif_id: gif.id) %>
+        <%= link_to 'Favorite', {:controller => "favorites",
                      :action => "create",
                      :user_id => current_user.id,
                      :gif_id => gif.id},
-                     :method => "post" %><p>
+                     :method => "post",
+                      class: "btn btn-success"%>
       <% else %>
-        <p>Already a favorite!</p>
-      <% end %><hr>
+        <span class="btn btn-success", disabled="disabled">Already a favorite!</span>
+        <% end %></div></div></div>
+      <% end %></div>
     <% end %>
-<% end %>
+
 
 <%= link_to "Back to my admin page", admin_user_path(current_user) %>
+</div>
