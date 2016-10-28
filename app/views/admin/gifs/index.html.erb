@@ -1,6 +1,6 @@
 <div class="container">
 <% @categories.each do |category| %>
-  <h2><%= category.search_term.capitalize %></h2>
+  <h1 style="font-weight: lighter" id="<%= category.search_term%>"><%= category.search_term.capitalize %></h1>
   <div class="row well">
     <% category.gifs.each do |gif| %>
       <div class="col-md-4">

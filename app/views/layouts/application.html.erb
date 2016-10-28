@@ -8,7 +8,7 @@
 </head>
 <body style="padding-top: 60px" class="text-center">
   <% flash.each do |type, msg| %>
-    <%= content_tag :div, msg, class:"flash_#{type}" %>
+    <%= content_tag :div, msg, class:"alert alert-#{type}", role: "alert" %>
   <% end %>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">

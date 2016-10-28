@@ -14,10 +14,10 @@ class Admin::UsersController < Admin::BaseController
       redirect_to admin_users_path
       flash[:success] = "New user created!"
     elsif User.find_by(email: @user.email)
-      flash.now[:error] = "User already exists, please try again"
+      flash.now[:info] = "User already exists, please try again"
       render :new
     else
-      flash.now[:error] = "Please fill in all fields before submitting new user"
+      flash.now[:warning] = "Please fill in all fields before submitting new user"
       render :new
     end
   end

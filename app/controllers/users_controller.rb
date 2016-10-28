@@ -17,9 +17,9 @@ class UsersController < ApplicationController
       flash[:success] = "New user created! Please log in."
     elsif User.find_by(email: @user.email)
       redirect_to login_path
-      flash[:error] = "User already exists, please log in"
+      flash[:info] = "User already exists, please log in"
     else
-      flash.now[:error] = "Please fill in all fields before submitting new user"
+      flash.now[:info] = "Please fill in all fields before submitting new user"
       render :new
     end
   end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def require_login
     unless session[:user_id]
-      flash[:error] = "You must be logged in to do that!"
+      flash[:danger] = "You must be logged in to do that!"
       redirect_to login_path
     end
   end

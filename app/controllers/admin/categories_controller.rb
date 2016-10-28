@@ -14,7 +14,7 @@ class Admin::CategoriesController < Admin::BaseController
       redirect_to admin_categories_path
       flash[:success] = "New category created!"
     else
-      flash.now[:error] = "Category exists, please try again"
+      flash.now[:info] = "Category exists, please try again"
       render :new
     end
   end
@@ -27,7 +27,7 @@ class Admin::CategoriesController < Admin::BaseController
       flash[:success] = "Category successfully deleted!"
     else
       redirect_to admin_categories_path
-      flash[:error] = "Category still has GIFs!"
+      flash[:danger] = "Category still has GIFs!"
     end
   end
 

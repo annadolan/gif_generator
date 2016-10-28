@@ -22,7 +22,7 @@ class GifsController < ApplicationController
 
   def require_login
     unless session[:user_id]
-      flash[:error] = "You must be logged in to do that!"
+      flash[:warning] = "You must be logged in to do that!"
       redirect_to login_path
     end
   end

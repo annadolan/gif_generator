@@ -1,8 +1,8 @@
 <h1>All Categories</h1>
 <% @categories.each do |category| %>
   <div class="category_<%= category.id %>">
-    <%= category.search_term %>
-    <%= link_to "Delete", admin_category_path(category), method: :delete %>
+    <h3><%= link_to category.search_term, admin_gifs_path(anchor: category.search_term) %>: <%= category.gifs.count %> GIFs
+    <%= link_to "Delete", admin_category_path(category), method: :delete, class: "btn btn-danger" %></h3>
   </div>
 <% end %>
 
