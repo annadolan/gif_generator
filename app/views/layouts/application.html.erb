@@ -6,9 +6,10 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body style="padding-top: 60px" class="text-center">
+<body style="padding-top: 50px" class="text-center">
   <% flash.each do |type, msg| %>
-    <%= content_tag :div, msg, class:"alert alert-#{type}", role: "alert" %>
+    <%= content_tag :div, msg, class:"alert alert-#{type} alert-dismissible", role: "alert" %>
+
   <% end %>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
