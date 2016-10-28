@@ -1,23 +1,16 @@
 <h1>Create a new user:</h1>
 
-<%= form_for @user do |f| %>
+<div class="row well"><%= form_for @user do |f| %>
 
 <%= f.label :username %>
-<%= f.text_field :username %>
+<%= f.text_field :username %></p>
 
 <%= f.label :email %>
-<%= f.text_field :email %>
+<%= f.text_field :email %></p>
 
 <%= f.label :password %>
-<%= f.password_field :password %>
-
-<%# if current_user.admin == true %>
-<%= f.label :admin %>
-<%= f.check_box :admin %>
-<%# else %>
-<%# params[:admin] = false %>
-<%# end %>
+<%= f.password_field :password %></p>
 
 <%= f.submit %>
 
-<% end %>
+<% end %></div>

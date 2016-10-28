@@ -1,0 +1,14 @@
+<h1>All Users</h1>
+
+<% @users.each do |user| %>
+  <p><%= user.username %>: <%= link_to user.email, "mailto: #{user.email}" %></p>
+  <p><%= link_to "Delete", admin_user_path(user), method: :delete %></p><hr>
+<% end %>
+
+<h1>All Admins</h1>
+
+<% @admins.each do |admin| %>
+  <p><%= admin.username %>: <%= link_to admin.email, "mailto: #{admin.email}" %></p>
+<% end %><hr>
+
+<%= link_to "Back to my admin page", admin_user_path(current_user) %>

@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save && logged_in?
@@ -22,7 +25,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user && User.find(params[:id]) == current_user
+      @user = current_user
+    else
+      render file: '/public/404'
+    end
   end
 
   private

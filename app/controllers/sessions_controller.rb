@@ -5,10 +5,14 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
 
-    if @user.authenticate(params[:password])
+    if @user.authenticate(params[:password]) && @user.admin == true
+      flash[:success] = "Successfully logged in as admin!"
+      session[:user_id] = @user.id
+      redirect_to admin_user_path(@user)
+    elsif @user.authenticate(params[:password])
       flash[:success] = "Successfully logged in!"
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       flash[:error] = "Incorrect password, please try again"
       render :new

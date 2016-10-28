@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::BaseController
 
   def index
     @categories = Category.all
@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path
+      redirect_to admin_categories_path
       flash[:success] = "New category created!"
     else
       flash.now[:error] = "Category exists, please try again"
@@ -21,9 +21,14 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
-    redirect_to categories_path
-    flash[:success] = "Category successfully deleted!"
+    if @category.gifs.count == 0
+      @category.destroy
+      redirect_to admin_categories_path
+      flash[:success] = "Category successfully deleted!"
+    else
+      redirect_to admin_categories_path
+      flash[:error] = "Category still has GIFs!"
+    end
   end
 
   private

@@ -2,9 +2,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :categories, only: [:index, :new, :create, :destroy]
+  namespace :admin do
+    resources :users, only: [:new, :index, :create, :destroy, :show]
+    resources :categories, only: [:index, :new, :create, :destroy]
+    resources :gifs, only: [:new, :index, :create, :destroy]
+    resources :favorites, only: [:new, :create, :destroy]
+  end
 
-  resources :gifs, only: [:new, :show, :create, :index, :destroy]
+  resources :gifs, only: [:show, :index]
 
   resources :favorites, only: [:new, :create, :destroy]
 
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

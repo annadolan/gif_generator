@@ -1,12 +1,14 @@
 <h1>Log in here!</h1>
-<%= form_tag login_path, method: :post do %>
+<div class="well"><%= form_tag login_path, method: :post do %>
 
-    <%= label_tag :email %>
-    <%= text_field_tag :email %><br/>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %></p>
 
-    <%= label_tag :password %>
-    <%= password_field_tag :password %><br/>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %></p>
 
-    <%= submit_tag "Login" %>
+  <%= submit_tag "Login", class: 'btn btn-success' %>
 
-<% end %>
+<% end %></div>
+
+<p><%= link_to "Create New Account", new_user_path %>

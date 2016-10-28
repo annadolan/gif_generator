@@ -2,6 +2,7 @@
   <h2><%= category.search_term %></h2>
     <% category.gifs.each do |gif| %>
       <%= link_to image_tag(gif.image_path), gif_path(gif) %>
+      <p><%= link_to "Delete", admin_gif_path(gif), method: :delete %></p>
       <% if !Favorite.find_by(user_id: current_user.id, gif_id: gif.id) %>
         <p><%= link_to 'Favorite me!', {:controller => "favorites",
                      :action => "create",
@@ -13,3 +14,5 @@
       <% end %><hr>
     <% end %>
 <% end %>
+
+<%= link_to "Back to my admin page", admin_user_path(current_user) %>
