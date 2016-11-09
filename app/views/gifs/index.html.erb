@@ -4,7 +4,7 @@
   <div class="row well">
     <% category.gifs.each do |gif| %>
       <div class="col-md-4">
-        <div class="thumbnail">
+        <div class="thumbnail" style="background-color: #edf4f4; padding:10px">
       <%= image_tag(gif.image_path) %>
       <div class="caption">
         <% if !Favorite.find_by(user_id: current_user.id, gif_id: gif.id) %>
@@ -17,6 +17,6 @@
       <% else %>
         <span class="btn btn-success", disabled="disabled">Already a favorite!</span>
         <% end %></div></div></div>
-      <% end %></div>
+      <% end %></div><hr>
     <% end %>
   </div>

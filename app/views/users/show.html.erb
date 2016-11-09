@@ -1,5 +1,14 @@
-  <% @user.favorites.each do |fav| %>
-    <p><%= image_tag(Gif.find_by(id: fav.gif_id).image_path) %></p>
-    <p><%= link_to "Unfavorite", favorite_path(fav), method: :delete, class: "btn btn-warning" %></p>
+<div class="container">
+<h1 style="font-weight:lighter"><%= @user.username.capitalize %>'s Favorites!</h1>
+<div class="row">
+<% @user.favorites.each do |fav| %>
+  <div class="col-md-4">
+    <div class="thumbnail" style="background-color: #edf4f4; padding:10px">
+    <%= image_tag(Gif.find_by(id: fav.gif_id).image_path) %>
+    <div class="caption">
+    <%= link_to "Unfavorite", favorite_path(fav), method: :delete, class: "btn btn-warning" %>
+  </div></div></div>
     <% end %>
+</div>
 <p><%= link_to "Back to all GIFs", gifs_path %><p>
+</div>
